@@ -15,8 +15,8 @@ const SideNav = () => {
         <Link to={"/trending"} className='hover:bg-[#6556CD] hover:text-white rounded-2xl p-3 duration-300'><i className="mr-2 ri-fire-fill"></i>Trending</Link>
         <Link to={"/popular"} className='hover:bg-[#6556CD] hover:text-white rounded-2xl p-3 duration-300'><i className=" mr-2 ri-bard-fill"></i>Popular</Link>
         <Link to={"/movie"} className='hover:bg-[#6556CD] hover:text-white rounded-2xl p-3 duration-300'><i className="mr-2 ri-movie-2-fill"></i>Movies</Link>
-        <Link className='hover:bg-[#6556CD] hover:text-white rounded-2xl p-3 duration-300'><i className="mr-2 ri-tv-2-fill"></i>Tv Shows</Link>
-        <Link className='hover:bg-[#6556CD] hover:text-white rounded-2xl p-3 duration-300'><i className="mr-2 ri-team-fill"></i>People</Link>
+        <Link to={"/tv"} className='hover:bg-[#6556CD] hover:text-white rounded-2xl p-3 duration-300'><i className="mr-2 ri-tv-2-fill"></i>Tv Shows</Link>
+        <Link to={"/people"} className='hover:bg-[#6556CD] hover:text-white rounded-2xl p-3 duration-300'><i className="mr-2 ri-team-fill"></i>People</Link>
       </nav>
 
       <hr className='border-none h-1 bg-zinc-400 mt-2 '/>

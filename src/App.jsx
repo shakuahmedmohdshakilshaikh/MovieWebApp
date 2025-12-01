@@ -6,6 +6,8 @@ import Loading from './components/partials/Loading'
 import Trending from './components/partials/Trending'
 import Popular from './components/partials/Popular'
 import Movie from './components/partials/Movie'
+import TvShows from './components/partials/TvShows'
+import People from './components/partials/People'
 
 function App() {
  
@@ -16,8 +18,10 @@ function App() {
        <Routes>
           <Route path='/' element={<Home />} /> 
           <Route path='/trending' element={<Trending />} /> 
-          <Route path='/popular' element={<Popular />} /> 
-          <Route path='/movie' element={<Movie />} /> 
+          <Route path='/popular' element={<Popular/>} /> 
+          <Route path='/movie' element={<Movie/>} /> 
+          <Route path='/tv' element={<TvShows/>} /> 
+          <Route path='/people' element={<People/>} /> 
        </Routes>
 
       </div>

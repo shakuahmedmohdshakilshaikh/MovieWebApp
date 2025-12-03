@@ -1,31 +1,29 @@
-
 import axios from '../utils/axios';
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Loading from './Loading';
-import Topnav from './Topnav';
-import Dropdown from './Dropdown';
+import Topnav from './partials/Topnav';
+import Dropdown from './partials/Dropdown';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Cards from './Cards';
+import Cards from './partials/Cards';
 
 
-const Popular = () => {
-   
-    const navigate = useNavigate();
-    const [category,setcategory] = useState("movie");
-    const [popular,setpopular] = useState([]);
+const People = () => {
+     const navigate = useNavigate();
+    const [category,setcategory] = useState("popular");
+    const [people,setpeople] = useState([]);
     const [page,setpage] = useState(1);
     const [hasMore,sethasMore] = useState(true);
-     document.title = "Popular - movieWeb "+ category.toUpperCase()+"'S"; 
+     document.title = "People - movieWeb "+ category.toUpperCase()+"'S"; 
 
-    const GetPopular = async () => {
+    const GetPeople = async () => {
     try {
       // use /movie/popular or /tv/popular depending on category
-      const { data } = await axios.get(`/${category}/popular?page=${page}`);
+      const { data } = await axios.get(`/person/${category}?page=${page}`);
     //   console.log(data.results);
       
       if (data.results.length > 0) {
-          setpopular((prevState) => [...prevState, ...data.results]);
+          setpeople((prevState) => [...prevState, ...data.results]);
           // use functional update to avoid stale closure
           setpage((p) => p + 1);
       } else {
@@ -39,10 +37,10 @@ const Popular = () => {
 
   const refershHandler = async () => {
     setpage(1);
-    setpopular([]);
+    setpeople([]);
     try {
-      const { data } = await axios.get(`/${category}/popular?page=1`);
-      setpopular(data.results);
+      const { data } = await axios.get(`/person/${category}?page=1`);
+      setpeople(data.results);
       setpage(2);
       sethasMore(true);
     } catch (error) {
@@ -54,19 +52,20 @@ const Popular = () => {
     refershHandler();
   },[category])
 
- return popular.length > 0 ? (
-    <div className="h-screen w-screen   ">
+
+  return people.length > 0 ? (
+    <div className="h-screen w-screen">
 
       <div className=" px-[3%] w-full  flex justify-between items-center">
         <h1
           className="w-[20%] text-2xl text-zinc-400 font-semibold"
           onClick={() => navigate(-1)}
         >
-          <i className="hover:text-[#6556CD] ri-arrow-left-line"></i>Popular
+          <i className="hover:text-[#6556CD] ri-arrow-left-line"></i>People<small className='ml-2 text-sm text-zinc-600'>({category})</small>
         </h1>
         <Topnav containerClass="w-[40%]" dropdownClass="w-[100%]" />
         <div className="flex">
-          <Dropdown title="category" options={["tv", "movie"]} func={(e)=>{setcategory(e.target.value)}} />
+          {/* <Dropdown title="category" options={["airing_today", "on_the_air","popular","top_rated"]} func={(e)=>{setcategory(e.target.value)}} /> */}
 
           <div className="w-[2%]"></div>
 
@@ -77,11 +76,12 @@ const Popular = () => {
       </div>
 
    <InfiniteScroll
-    dataLength={popular.length}
-    next={GetPopular}
+    dataLength={people.length}
+    next={GetPeople}
     hasMore={hasMore}
     loader={<h1 className=" ">Loading...</h1>}> 
-     <Cards data={popular} title={category} />
+
+     <Cards data={people} title="person" />
    </InfiniteScroll>
    
 
@@ -91,4 +91,4 @@ const Popular = () => {
   )
 }
 
-export default Popular
+export default People

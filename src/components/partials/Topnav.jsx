@@ -1,4 +1,4 @@
-import axios from "../utils/axios";
+import axios from "../../utils/axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import noimage from "/noimage.jpeg";
@@ -39,7 +39,7 @@ const Topnav = ({ containerClass = "w-[50%]", dropdownClass = "w-[50%]" }) => {
         )}
       </div>
 
-      <div className={`${dropdownClass} max-h-[50vh] bg-zinc-900 absolute top-full left-1/2 transform -translate-x-1/2 overflow-auto rounded mt-2 ${query.length > 0 ? '' : 'hidden'}`}>
+      <div className={`${dropdownClass} max-h-[50vh] bg-zinc-900 absolute z-[100] top-full left-1/2 transform -translate-x-1/2 overflow-auto rounded mt-2 ${query.length > 0 ? '' : 'hidden'}`}>
         {searches.map((s, i) => (
           <Link
             key={i}

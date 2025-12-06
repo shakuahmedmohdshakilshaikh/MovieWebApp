@@ -41,7 +41,7 @@ const Topnav = ({ containerClass = "w-[50%]", dropdownClass = "w-[50%]" }) => {
 
       <div className={`${dropdownClass} max-h-[50vh] bg-zinc-900 absolute z-[100] top-full left-1/2 transform -translate-x-1/2 overflow-auto rounded mt-2 ${query.length > 0 ? '' : 'hidden'}`}>
         {searches.map((s, i) => (
-          <Link
+          <Link to={`${s.media_type}/details/${s.id}`}
             key={i}
             className="w-full p-3 flex items-center border-b-2 border-zinc-700 text-zinc-200 font-semibold hover:text-white hover:bg-zinc-800 duration-300"
           >

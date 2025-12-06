@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Cards = ({ data, title }) => {
-  console.log(data);
-   console.log(title);
+  // console.log(data);
+  //  console.log(title);
   
   
   return (
     <div className="flex flex-wrap w-full h-full p-[3%] bg-[#1F1E24] 
     ">
       {data.map((c, i) => (
-        <Link to={`/${data.media_type || title}/details/${c.id}`}
+        <Link to={`/${c.media_type || title}/details/${c.id}`}
   className="realtive w-[35vh]  mr-[5%] mb-[5%]"
   key={c.id}>
           <img

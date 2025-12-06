@@ -24,6 +24,7 @@ function App() {
           
           <Route path="/movie" element={<Movie />} />
           <Route path="/movie/details/:id" element={<MovieDetails />} />
+
             
           <Route path="/tv" element={<TvShows />} />
           <Route path="/tv/details/:id" element={<TvDetails />} />
